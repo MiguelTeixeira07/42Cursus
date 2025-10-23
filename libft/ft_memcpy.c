@@ -1,0 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/21 13:24:26 by migteixe          #+#    #+#             */
+/*   Updated: 2025/10/21 13:24:27 by migteixe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+//#include <string.h>
+//#include <stdio.h>
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptrs;
+	unsigned char	*ptrd;
+
+	i = 0;
+	ptrd = (unsigned char *)dest;
+	ptrs = (unsigned char *)src;
+	while (i < n && ptrs[i] && ptrd[i])
+	{
+		ptrd[i] = ptrs[i];
+		i++;
+	}
+	if (!ptrs[i] && ptrs[i + 1])
+		ptrd[i] = '\0';
+	return (ptrd);
+}
+
+/*int main() {
+	char src[] = "abcdefgh";
+	char dest1[] = "XXXXXXXX";
+	char dest2[] = "XXXXXXXX";
+
+	ft_memcpy(dest1, src, 4);
+	memcpy(dest2, src, 4);
+
+	printf("%s\n%s", dest1, dest2);
+}*/

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:53:16 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 13:53:17 by migteixe         ###   ########.fr       */
+/*   Created: 2025/10/20 18:46:16 by migteixe          #+#    #+#             */
+/*   Updated: 2025/10/21 13:50:30 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
+//#include <stdio.h>
+//#include <ctype.h>
 
-	if (*little == '\0')
-		return ((char *)big);
-	i = 0;
-	while (big[i] && i < len)
-	{
-		j = 0;
-		while (big[i + j] == little[j] && (i + j) < len)
-		{
-			if (little[j + 1] == '\0')
-				return ((char *)big + i);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
+int	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }
+
+/*int main() {
+	printf("%d\n%d", isalpha('a'), ft_isalpha('a'));
+}*/

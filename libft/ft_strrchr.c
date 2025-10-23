@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:53:16 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 13:53:17 by migteixe         ###   ########.fr       */
+/*   Created: 2025/10/23 14:51:01 by migteixe          #+#    #+#             */
+/*   Updated: 2025/10/23 14:51:02 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
+//#include <stdio.h>
+//#include <string.h>
 
-	if (*little == '\0')
-		return ((char *)big);
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*ptr;
+	char	*last;
+
 	i = 0;
-	while (big[i] && i < len)
+	ptr = (char *)s;
+	while (ptr[i])
 	{
-		j = 0;
-		while (big[i + j] == little[j] && (i + j) < len)
-		{
-			if (little[j + 1] == '\0')
-				return ((char *)big + i);
-			j++;
-		}
+		if (ptr[i] == (unsigned char)c)
+			last = &ptr[i];
 		i++;
 	}
-	return (NULL);
+	if ((unsigned char)c == '\0')
+		return (&ptr[i]);
+	return (last);
 }
+
+/*int main() {
+	char str1[] = "ganda frase de testes";
+	char str2[] = "ganda frase de testes";
+
+    printf("%s\n%s", ft_strrchr(str1, 'd'), strrchr(str2, 'd'));
+}*/

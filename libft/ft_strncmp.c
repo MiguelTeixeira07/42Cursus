@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:53:16 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 13:53:17 by migteixe         ###   ########.fr       */
+/*   Created: 2025/10/23 14:57:54 by migteixe          #+#    #+#             */
+/*   Updated: 2025/10/23 14:58:04 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	size_t			i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-	if (*little == '\0')
-		return ((char *)big);
 	i = 0;
-	while (big[i] && i < len)
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (i < n && (ptr1[i] || ptr2[i]))
 	{
-		j = 0;
-		while (big[i + j] == little[j] && (i + j) < len)
-		{
-			if (little[j + 1] == '\0')
-				return ((char *)big + i);
-			j++;
-		}
+		if (ptr1[i] - ptr2[i] != 0)
+			return (ptr1[i] - ptr2[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

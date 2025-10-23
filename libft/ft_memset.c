@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:53:16 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 13:53:17 by migteixe         ###   ########.fr       */
+/*   Created: 2025/10/21 15:19:43 by migteixe          #+#    #+#             */
+/*   Updated: 2025/10/21 15:19:45 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
+//#include <stdio.h>
+//#include <string.h>
 
-	if (*little == '\0')
-		return ((char *)big);
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
 	i = 0;
-	while (big[i] && i < len)
+	while (i < n)
 	{
-		j = 0;
-		while (big[i + j] == little[j] && (i + j) < len)
-		{
-			if (little[j + 1] == '\0')
-				return ((char *)big + i);
-			j++;
-		}
+		ptr[i] = c;
 		i++;
 	}
-	return (NULL);
+	return (s);
 }
+
+/*int main() {
+	char str1[] = "ganda frase de testes";
+	char str2[] = "ganda frase de testes";
+
+    printf("%s\n%s", ft_memset(str1, 126, 5), memset(str2, 126, 5));
+}*/
