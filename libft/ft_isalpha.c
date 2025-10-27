@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 18:46:16 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/21 13:50:30 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:01:59 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
+		return (1024);
 	return (0);
 }
 
 /*int main() {
-	printf("%d\n%d", isalpha('a'), ft_isalpha('a'));
+	printf("%d", isalpha('a'));
 }*/

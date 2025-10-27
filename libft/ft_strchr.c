@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 19:29:10 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 14:01:24 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:08:48 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ char	*ft_strchr(const char *s, int c)
 {
 	int		i;
 	char	*ptr;
+	size_t	len;
 
 	i = 0;
 	ptr = (char *)s;
-	while (ptr[i])
+	len = ft_strlen(ptr);
+	while (i <= (int)len)
 	{
-		if (ptr[i] == (unsigned char)c)
+		if (ptr[i] == (char)c)
 			return (&ptr[i]);
 		i++;
 	}

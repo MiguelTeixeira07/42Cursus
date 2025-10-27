@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 19:26:11 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/23 15:05:12 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/10/27 17:59:37 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 			dst[i] = src[i];
 			i++;
 		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (src_len);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 14:06:00 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/24 14:06:00 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:00:52 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	size = outsize(n);
-	out = malloc(size);
+	out = malloc(size + 1);
 	if (!out)
 		return (NULL);
+	out[size] = '\0';
+	if (n == 0)
+		out[0] = '0';
 	if (n < 0)
 	{
-		nb = -n;
+		nb = -nb;
 		out[0] = '-';
 	}
-	out[size] = '\0';
 	while (nb > 0)
 	{
 		out[--size] = '0' + (nb % 10);
@@ -53,5 +55,5 @@ char	*ft_itoa(int n)
 }
 
 /*int main() {
-	printf("%s%%\n", ft_itoa(-12345));
+	printf("%s%%\n", ft_itoa(0));
 }*/
