@@ -6,30 +6,11 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 16:52:00 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/02 16:52:00 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:17:58 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	count_params(const char *str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			count++;
-			i++;
-		}
-		i++;
-	}
-	return (count);
-}
 
 static int	choose(char c, va_list *args)
 {
@@ -54,25 +35,21 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		i;
-	int		num_params;
 	long	num_chars;
 
 	va_start(args, str);
 	i = 0;
-	num_params = count_params(str);
 	num_chars = 0;
-	while (num_params)
+	while (str[i])
 	{
 		if (str[i] == '%')
+			num_chars += choose(str[++i], &args);
+		else
 		{
-			num_chars += choose(str[i + 1], &args);
-			num_params--;
-			i++;
-			break ;
+			write(1, &str[i], 1);
+			num_chars++;
 		}
-		write(1, &str[i], 1);
 		i++;
-		num_chars++;
 	}
 	va_end(args);
 	return (num_chars);

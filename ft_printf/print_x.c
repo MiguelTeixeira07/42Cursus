@@ -6,22 +6,27 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:42:23 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/02 18:42:23 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:21:34 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_x(int num, char caps)
+int	print_x(unsigned long num, char caps)
 {
 	const char	*base;
+	int			count;
 
-	if (caps)
+	count = 0;
+	if (caps == 'X')
 		base = "0123457689ABCDEF";
 	else
 		base = "0123456789abcdef";
-	write(1, &base[num], 16);
-	return (5);
+	if (num >= 16)
+		count += print_x(num / 16, caps);
+	write(1, &base[num % 16], 1);
+	count++;
+	return (count);
 }
 
 /*int main() {
