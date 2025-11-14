@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:45:07 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/12 14:45:07 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/14 22:23:30 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,104 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-char	*empty_buffer(const char *buffer)
+int	countwords(const char *s)
 {
-	ssize_t	i;
-	char	out[BUFFER_SIZE];
+	int	count;
+	int	i;
+
+	if (!s || !*s)
+		return (0);
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			count++;
+		i++;
+	}
+	if (i > 0 && s[i - 1] != '\n')
+		count++;
+	return (count);
+}
+
+size_t	wordsize(const char *s)
+{
+	size_t	i;
 
 	i = 0;
-	while (buffer[i++] != '\n');
-	i++;
-	while (buffer[i] != '\n')
-		out[i] = buffer[i++];
-	out[i] = '\0';
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i] == '\n')
+		i++;
+	return (i);
+}
+
+char	**ft_split(const char *s)
+{
+	int		i;
+	int		total;
+	char	**out;
+	size_t	len;
+
+	if (!s)
+		return (NULL);
+	total = countwords(s);
+	out = malloc((total + 1) * sizeof(char *));
+	if (!out)
+		return (NULL);
+	i = 0;
+	while (*s && i < total)
+	{
+		len = wordsize(s);
+		out[i] = malloc(len + 1);
+		if (!out[i])
+			return (NULL);
+		ft_strlcpy(out[i], s, len + 1);
+		s += len;
+		i++;
+	}
+	out[i] = NULL;
 	return (out);
 }
 
 char	*get_next_line(int fd)
 {
-	static char		buffer[BUFFER_SIZE + 1];
-	static ssize_t	bytes_read;
-	char		*out;
-	ssize_t		i;
-	
-	i = 0;
-	if (bytes_read)
+	char			buffer[BUFFER_SIZE + 1];
+	ssize_t			r;
+	char			*file;
+	static char		**out;
+	static int		i;
+
+	if (!out)
 	{
-		out = empty_buffer(buffer);
+		file = NULL;
+		r = BUFFER_SIZE;
+		while (r == BUFFER_SIZE)
+		{
+			r = read(fd, buffer, BUFFER_SIZE);
+			if (r < 0)
+				return (NULL);
+			buffer[r] = '\0';
+			file = ft_modstrjoin(file, buffer);
+		}
+		out = ft_split(file);
+		i = 0;
+		return (out[0]);
 	}
+	if (!out[i++])
+		return (NULL);
+	return (out[i]);
 }
 
-int main() {
-	int fd = open("test.txt", O_RDONLY);
-	char *str = malloc(1);
+int	main() {
+	int		fd;
+	char	*line;
 
-	do {
-		free(str);
-		str = get_next_line(fd);
-		printf("%s\n", str);
-	} while(str[0]);
-
-	return 0;
+	fd = open("test.txt", O_RDONLY);
+	if (fd < 0)
+		return (1);
+	while ((line = get_next_line(fd)))
+		printf("%s", line);
+	close(fd);
+	return (0);
 }

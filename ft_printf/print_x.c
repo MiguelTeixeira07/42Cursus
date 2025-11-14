@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:42:23 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/05 17:21:34 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/06 11:33:39 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_x(unsigned long num, char caps)
 
 	count = 0;
 	if (caps == 'X')
-		base = "0123457689ABCDEF";
+		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
 	if (num >= 16)

@@ -1,4 +1,5 @@
-#include <stdio.h>
+/*#include <stdio.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 int	main(void)
@@ -45,9 +46,11 @@ int	main(void)
 	ft_printf("ft_printf: [%%]\n\n");
 
 	printf("=== Teste combinado ===\n");
-	printf("printf   : Caractere=%c, String=%s, Ponteiro=%p, Inteiro=%d, Hex=%x, Percent=%%\n",
+	printf("printf   : Caractere=%c, String=%s, Ponteiro=%p, 
+	Inteiro=%d, Hex=%x, Percent=%%\n",
 		c, c_str, ptr, num, num);
-	ft_printf("ft_printf: Caractere=%c, String=%s, Ponteiro=%p, Inteiro=%d, Hex=%x, Percent=%%\n",
+	ft_printf("ft_printf: Caractere=%c, String=%s, Ponteiro=%p, 
+	Inteiro=%d, Hex=%x, Percent=%%\n",
 		c, c_str, ptr, num, num);
 
 	printf("\n=== Testes extra de robustez ===\n");
@@ -69,5 +72,8 @@ int	main(void)
 	printf("printf   : [] (string vazia)\n");
 	ft_printf("ft_printf: [] (string vazia)\n");
 
+	printf(" %X %X %X %X\n", INT_MAX, INT_MIN, 0, -42);
+	ft_printf(" %X %X %X %X\n", INT_MAX, INT_MIN, 0, -42);
+
 	return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 13:52:15 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/01 13:52:15 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/06 11:25:57 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	print_d(int num)
 	{
 		write(1, "-", 1);
 		nb = -nb;
+		count++;
 	}
 	if (nb >= 10)
 		count += print_d(nb / 10);

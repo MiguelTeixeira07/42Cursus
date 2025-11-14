@@ -14,8 +14,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C libft
 	cp libft/libft.a .
-	ar rcs $(NAME) $(OBJ) libft.a
-	rm -f libft.a
+	ar -x libft.a
+	ar rcs $(NAME) $(OBJ) *.o
+	rm -f libft.a *.o
 
 clean:
 	make clean -C libft
@@ -26,3 +27,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

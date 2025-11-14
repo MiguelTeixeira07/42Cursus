@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:46:51 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/12 14:46:51 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/14 21:51:58 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+int		countwords(const char *s);
+size_t	wordsize(const char *s);
+char	**ft_split(char const *s);
 char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *str);
-size_t	ft_strcpy(char *dst, const char *src);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s);
+char	*ft_modstrjoin(char *s1, char *s2);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif
