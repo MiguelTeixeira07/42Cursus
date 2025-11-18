@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:45:07 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/14 22:23:30 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/18 22:38:49 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,104 +15,58 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	countwords(const char *s)
+char	*get_next_line(int fd)
 {
-	int	count;
-	int	i;
+	static char		buffer[BUFFER_SIZE + 1];
+	static ssize_t	bytes_read;
+	char			*out;
 
-	if (!s || !*s)
-		return (0);
-	count = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			count++;
-		i++;
-	}
-	if (i > 0 && s[i - 1] != '\n')
-		count++;
-	return (count);
-}
-
-size_t	wordsize(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (s[i] == '\n')
-		i++;
-	return (i);
-}
-
-char	**ft_split(const char *s)
-{
-	int		i;
-	int		total;
-	char	**out;
-	size_t	len;
-
-	if (!s)
+	if (read(fd, buffer, 0) != 0)
 		return (NULL);
-	total = countwords(s);
-	out = malloc((total + 1) * sizeof(char *));
-	if (!out)
-		return (NULL);
-	i = 0;
-	while (*s && i < total)
+	out = NULL;
+	if (bytes_read && ft_strlen(buffer) != (size_t)bytes_read)
 	{
-		len = wordsize(s);
-		out[i] = malloc(len + 1);
-		if (!out[i])
-			return (NULL);
-		ft_strlcpy(out[i], s, len + 1);
-		s += len;
-		i++;
+		out = ft_modstrjoin(out, buffer + ft_strlen(buffer));
+		*ft_strchr(buffer, '\n') = ' ';
 	}
-	out[i] = NULL;
+	while (!ft_strchr(out, '\n'))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+			return (free(out), NULL);
+		if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		out = ft_modstrjoin(out, buffer);
+	}
 	return (out);
 }
 
-char	*get_next_line(int fd)
-{
-	char			buffer[BUFFER_SIZE + 1];
-	ssize_t			r;
-	char			*file;
-	static char		**out;
-	static int		i;
-
-	if (!out)
-	{
-		file = NULL;
-		r = BUFFER_SIZE;
-		while (r == BUFFER_SIZE)
-		{
-			r = read(fd, buffer, BUFFER_SIZE);
-			if (r < 0)
-				return (NULL);
-			buffer[r] = '\0';
-			file = ft_modstrjoin(file, buffer);
-		}
-		out = ft_split(file);
-		i = 0;
-		return (out[0]);
-	}
-	if (!out[i++])
-		return (NULL);
-	return (out[i]);
-}
-
-int	main() {
+/* int	main() {
 	int		fd;
 	char	*line;
+	char	name[] = "read_error.txt";
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("read_error.txt", O_RDONLY);
 	if (fd < 0)
 		return (1);
+ 	line = get_next_line(fd);
+	printf("%s", line);
+	if (BUFFER_SIZE > 100) {
+		char *temp;
+		do {
+			temp = get_next_line(fd);
+			free(temp);
+		} while (temp != NULL);
+	}
+	line = get_next_line(fd);
+	printf("%s", line);
+	close(fd);
+	fd = open(name, O_RDONLY);
+	line = get_next_line(fd);
+	printf("%s", line);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	close(fd);
 	return (0);
-}
+} */
