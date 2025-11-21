@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:59:39 by migteixe          #+#    #+#             */
-/*   Updated: 2025/11/18 20:08:53 by migteixe         ###   ########.fr       */
+/*   Updated: 2025/11/21 18:54:37 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,21 @@ char	*ft_modstrjoin(char *s1, char *s2)
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (str);
+}
+
+void	move_buffer(char *s)
+{
+	size_t	i;
+	size_t	j;
+
+	i = ft_strlen(s);
+	j = 0;
+	while (s[i])
+	{
+		s[j] = s[i];
+		i++;
+		j++;
+	}
+	if (j < BUFFER_SIZE + 1)
+		s[j] = 0;
 }
