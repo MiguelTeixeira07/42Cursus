@@ -1,6 +1,32 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	count_strs(char **strs)
+static long long	ft_atoll(char *str)
+{
+	long long	num;
+	int	isneg;
+	int	i;
+
+	num = 0;
+	isneg = 1;
+	i = 0;
+	while (str[i] && ft_strchr("\t\n\f\r\v ", str[i]))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		isneg *= -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * isneg);
+}
+
+static int	count_strs(char **strs)
 {
 	int	i;
 
@@ -12,24 +38,52 @@ int	count_strs(char **strs)
 	return (i);
 }
 
-void	input_to_list(int numstrs, char **strs, t_stack **stack)
+static void	input_to_list(int numstrs, char **strs, t_stack **stack)
 {
 	char	**nums;
+	int		i;
+	int		c_num;
+	t_stack	*new;
 
+	i = numstrs - 1;
+	nums = strs;
 	if (numstrs == 1)
 	{
-		nums = ft_split(*strs);
+		nums = ft_split(*strs, ' ');
 		numstrs = count_strs(nums);
 		return (input_to_list(numstrs, nums, stack));
 	}
-	while ()
+	while (i >= 0)
+	{
+		c_num = ft_atoll(nums[i--]);
+		if (c_num < INT_MIN && c_num > INT_MAX)
+			ft_error();
+		new = malloc(sizeof(t_stack));
+		if (!new)
+			return;
+		new->num = c_num;
+		new->next = *stack;
+		*stack = new;
+	}
+}
+
+#include <stdio.h>
+void print_stack(t_stack *head_a) {
+	t_stack *node_a = head_a;
+	//t_stack *node_b = head_b;
+
+	while(node_a) {
+		printf("%d\n", node_a->num);
+		node_a = node_a->next;
+		//node_b = node_b->next;
+	}
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	int		i;
 
 	a = NULL;
 	input_to_list(argc - 1, argv + 1, &a);
+	print_stack(a);
 }

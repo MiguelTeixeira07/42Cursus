@@ -2,8 +2,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
+# include <limits.h>
 
 typedef struct node
 {
@@ -12,6 +11,8 @@ typedef struct node
 }	t_stack;
 
 
+
+void	ft_error();
 
 void	swap(t_stack **head);
 void	swap_all(t_stack **head_a, t_stack **head_b);
