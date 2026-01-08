@@ -8,11 +8,13 @@ void	push(t_stack **head_a, t_stack **head_b, char stack)
 
 	if (stack == 'a')
 	{
+		write(1, "pa\n", 3);
 		from = head_b;
 		to = head_a;
 	}
 	else
 	{
+		write(1, "pb\n", 3);
 		from = head_a;
 		to = head_b;
 	}

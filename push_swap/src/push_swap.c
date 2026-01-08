@@ -67,7 +67,7 @@ static void	input_to_list(int numstrs, char **strs, t_stack **stack)
 	}
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 void print_stack(t_stack *head_a) {
 	t_stack *node_a = head_a;
 	//t_stack *node_b = head_b;
@@ -77,7 +77,7 @@ void print_stack(t_stack *head_a) {
 		node_a = node_a->next;
 		//node_b = node_b->next;
 	}
-}
+} */
 
 int	main(int argc, char **argv)
 {
