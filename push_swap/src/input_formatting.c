@@ -38,7 +38,7 @@ static int	count_strs(char **strs)
 	return (i);
 }
 
-static void	input_to_list(int numstrs, char **strs, t_stack **stack)
+void	input_to_list(int numstrs, char **strs, t_stack **stack)
 {
 	char	**nums;
 	int		i;
@@ -65,25 +65,4 @@ static void	input_to_list(int numstrs, char **strs, t_stack **stack)
 		new->next = *stack;
 		*stack = new;
 	}
-}
-
-/* #include <stdio.h>
-void print_stack(t_stack *head_a) {
-	t_stack *node_a = head_a;
-	//t_stack *node_b = head_b;
-
-	while(node_a) {
-		printf("%d\n", node_a->num);
-		node_a = node_a->next;
-		//node_b = node_b->next;
-	}
-} */
-
-int	main(int argc, char **argv)
-{
-	t_stack	*a;
-
-	a = NULL;
-	input_to_list(argc - 1, argv + 1, &a);
-	print_stack(a);
 }

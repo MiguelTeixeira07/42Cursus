@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migteixe <migteixe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:32:06 by migteixe          #+#    #+#             */
-/*   Updated: 2025/10/27 18:30:53 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:18:21 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int	ft_atoi(const char *str)
 	return (num * isneg);
 }
 
-/*int main() {
+/* int main() {
 	printf("%d\n%d", atoi("123567"),ft_atoi("123567"));
-}*/
+} */

@@ -12,7 +12,7 @@ void	swap(t_stack **head)
 	(*head)->next = temp;
 }
 
-void	ss(t_stack **head_a, t_stack **head_b)
+void	swap_all(t_stack **head_a, t_stack **head_b)
 {
 	swap(head_a);
 	swap(head_b);
