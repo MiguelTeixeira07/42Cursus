@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/11 00:57:38 by migteixe          #+#    #+#             */
+/*   Updated: 2026/01/11 00:57:38 by migteixe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -14,10 +26,13 @@ typedef struct node
 
 
 // inputs
-void	input_to_list(int numstrs, char **strs, t_stack **stack);
+void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b);
 
 // error managing
-void	ft_error();
+void	ft_error(t_stack **a, t_stack **b);
+void	free_stacks(t_stack **a, t_stack **b);
+void	invalid_input(char *str, t_stack **a, t_stack **b);
+void	check_duplicates(t_stack **a, t_stack **b);
 
 // operations
 void	operator(t_stack **head_a, t_stack **head_b, char *op);

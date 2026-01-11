@@ -1,27 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index_sorting.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/11 00:57:12 by migteixe          #+#    #+#             */
+/*   Updated: 2026/01/11 00:57:12 by migteixe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-static int	*to_index(int *arr, t_stack *list)
+static int	*to_index(int *arr, int *sorted, int size)
 {
-	t_stack	*head;
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	head = list;
-	while (i < stack_size(head))
+	while (i < size)
 	{
 		j = 0;
-		list = head;
-		while (list && list->num != arr[i])
+		while (j < size)
 		{
+			if (arr[i] == sorted[j])
+			{
+				arr[i] = j;
+				break;
+			}
 			j++;
-			list = list->next;
 		}
-		arr[i] = list->num;
 		i++;
 	}
-	return (arr);
+	return arr;
 }
 
 int	*index_sort(t_stack *list)
@@ -29,21 +40,26 @@ int	*index_sort(t_stack *list)
 	int	i;
 	int	j;
 	int	temp;
+	int	size;
 	int	*arr;
+	int	*sorted;
 
+	size = stack_size(list);
 	arr = list_to_arr(list);
+	sorted = list_to_arr(list);
 	i = 0;
-	while (i + 1 < stack_size(list))
+	while (i + 1 < size)
 	{
-		if (arr[i] > arr[i + 1])
+		if (sorted[i] > sorted[i + 1])
 		{
-			temp = arr[i + 1];
-			arr[i + 1] = arr[i];
-			arr[i] = temp;
+			temp = sorted[i];
+			sorted[i] = sorted[i + 1];
+			sorted[i + 1] = temp;
 			i = -1;
 		}
 		i++;
 	}
-	arr = to_index(arr, list);
-	return (arr);
+	arr = to_index(arr, sorted, size);
+	free(sorted);
+	return arr;
 }
