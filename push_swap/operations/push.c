@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:56:49 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:56:49 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:59:41 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	push(t_stack **head_a, t_stack **head_b, char stack)
 {
-	t_stack **from;
-	t_stack **to;
-	t_stack *temp;
+	t_stack	**from;
+	t_stack	**to;
+	t_stack	*temp;
 
 	if (stack == 'a')
 	{
@@ -29,7 +29,7 @@ void	push(t_stack **head_a, t_stack **head_b, char stack)
 		to = head_b;
 	}
 	if (!from || !*from)
-		return;
+		return ;
 	temp = *from;
 	*from = (*from)->next;
 	temp->next = *to;

@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:57:28 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:57:28 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:57:58 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ char	*bin(int n)
 
 int	stack_size(t_stack *head)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while(head)
+	while (head)
 	{
 		i++;
 		head = head->next;
@@ -82,11 +82,11 @@ int	ft_checksorted(t_stack *stack)
 void	list_to_bin(int *arr, t_stack *list)
 {
 	t_stack	*node;
-	int	i;
+	int		i;
 
 	node = list;
 	i = 0;
-	while(i < stack_size(list))
+	while (i < stack_size(list))
 	{
 		node->bin = arr[i];
 		node = node->next;

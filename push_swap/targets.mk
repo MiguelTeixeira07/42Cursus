@@ -10,7 +10,7 @@ SRCS = $(addsuffix .c, \
 	$(addprefix $(ERR_DIR)/,  errors) \
 	$(addprefix $(OP_DIR)/, operator push rotate swap) \
 	$(addprefix $(SRC_DIR)/,  input_formatting utils) \
-	$(addprefix $(SORT_DIR)/,  sorting index_sorting) \
+	$(addprefix $(SORT_DIR)/,  sorting index_sorting sort3 small_sorts) \
 	$(addprefix $(DB_DIR)/,  debug_functions) \
 )
 

@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:57:38 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:57:38 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:03:05 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct node
 	int			num;
 	int			bin;
 }	t_stack;
-
 
 // inputs
 void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b);
@@ -46,10 +45,12 @@ void	rev_rotate_all(t_stack **head_a, t_stack **head_b);		// rrr
 
 // sorting
 void	sort(t_stack **a, t_stack **b);
+int		*index_sort(t_stack *list);
+void	sort3(t_stack **a);
+void	small_sort(t_stack **a, t_stack **b);
 
 // utils
 int		*list_to_arr(t_stack *stack);
-int		*index_sort(t_stack *list);
 int		stack_size(t_stack *head);
 int		ft_checksorted(t_stack *stack);
 char	*bin(int n);

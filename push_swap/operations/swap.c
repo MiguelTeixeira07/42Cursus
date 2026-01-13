@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:56:58 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:56:58 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:00:01 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	swap(t_stack **head)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!head || !*head || !(*head)->next)
-		return;
+		return ;
 	temp = *head;
 	*head = (*head)->next;
 	temp->next = (*head)->next;

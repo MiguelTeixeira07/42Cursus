@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:57:12 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:57:12 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:07:07 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,18 @@ static int	*to_index(int *arr, int *sorted, int size)
 			if (arr[i] == sorted[j])
 			{
 				arr[i] = j;
-				break;
+				break ;
 			}
 			j++;
 		}
 		i++;
 	}
-	return arr;
+	return (arr);
 }
 
 int	*index_sort(t_stack *list)
 {
 	int	i;
-	int	j;
 	int	temp;
 	int	size;
 	int	*arr;
@@ -61,5 +60,5 @@ int	*index_sort(t_stack *list)
 	}
 	arr = to_index(arr, sorted, size);
 	free(sorted);
-	return arr;
+	return (arr);
 }

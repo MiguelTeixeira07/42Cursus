@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:56:45 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:56:45 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:58:31 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	ft_strcmp(char *s1, char *s2)
 	while (*s1 && *s2)
 	{
 		if (*s1 != *s2)
-			return (unsigned char)*s1 - (unsigned char)*s2;
+			return ((unsigned char)*s1 - (unsigned char)*s2);
 		s1++;
 		s2++;
 	}
-	return (unsigned char)*s1 - (unsigned char)*s2;
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
 void	operator(t_stack **a, t_stack **b, char *op)

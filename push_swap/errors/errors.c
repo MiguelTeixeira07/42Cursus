@@ -6,7 +6,7 @@
 /*   By: migteixe <migteixe@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 00:56:24 by migteixe          #+#    #+#             */
-/*   Updated: 2026/01/11 00:56:24 by migteixe         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:44:15 by migteixe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ void	check_duplicates(t_stack **a, t_stack **b)
 	}
 }
 
+static int	invalid_signal(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\0')
+			return (1);
+		if (str[i] == ' ')
+			break ;
+		i++;
+	}
+	return (0);
+}
+
 void	invalid_input(char *str, t_stack **a, t_stack **b)
 {
 	int	i;
@@ -38,14 +56,14 @@ void	invalid_input(char *str, t_stack **a, t_stack **b)
 	i = -1;
 	while (str[++i])
 		if (str[i] != ' ' && !ft_isdigit(str[i])
-		 && ((str[i] != '-' || str[i] != '+') && !ft_isdigit(str[i + 1])))
+			&& invalid_signal(str + i))
 			ft_error(a, b);
 }
 
 void	ft_error(t_stack **a, t_stack **b)
 {
-	free_stacks(a, b);
 	write(2, "Error\n", 6);
+	free_stacks(a, b);
 	exit(1);
 }
 
