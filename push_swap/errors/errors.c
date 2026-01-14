@@ -31,33 +31,28 @@ void	check_duplicates(t_stack **a, t_stack **b)
 	}
 }
 
-static int	invalid_signal(char *str)
+void	invalid_input(char *str)
 {
 	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\0')
-			return (1);
-		if (str[i] == ' ')
-			break ;
-		i++;
-	}
-	return (0);
-}
-
-void	invalid_input(char *str, t_stack **a, t_stack **b)
-{
-	int	i;
+	int	number;
+	int	invalid;
+	int issignal;
 
 	i = -1;
+	number = 0;
+	if (!str[0] || !has_number(str) || has_non_number(str))
+		ft_error(NULL, NULL);
 	while (str[++i])
-		if (str[i] != ' ' && !ft_isdigit(str[i])
-			&& invalid_signal(str + i))
-			ft_error(a, b);
+	{
+		issignal = (str[i] == '+' || str[i] == '-');
+		invalid = (str[i] != ' ' && !ft_isdigit(str[i]));
+		if (number && invalid)
+			ft_error(NULL, NULL);
+		if (ft_isdigit(str[i]) || issignal)
+			number = 1;
+		if (str[i] == ' ')
+			number = 0;
+	}
 }
 
 void	ft_error(t_stack **a, t_stack **b)

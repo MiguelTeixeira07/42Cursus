@@ -91,7 +91,6 @@ void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b)
 	t_stack	*new;
 
 	strnums = joinstrs(strs, numstrs);
-	invalid_input(strnums, a, b);
 	nums = ft_split(strnums, ' ');
 	free(strnums);
 	i = count_strs(nums) - 1;
@@ -99,7 +98,7 @@ void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b)
 	{
 		c_num = ft_atoll(nums[i]);
 		if (c_num < INT_MIN || c_num > INT_MAX)
-			ft_error(a, b);
+			atoll_error(a, b, nums);
 		new = malloc(sizeof(t_stack));
 		if (!new)
 			return ;

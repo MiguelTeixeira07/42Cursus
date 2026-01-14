@@ -12,17 +12,6 @@
 
 #include "push_swap.h"
 
-static int	has_number(const char *str)
-{
-	while (*str)
-	{
-		if (ft_isdigit((unsigned char)*str))
-			return (1);
-		str++;
-	}
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	int		*arr;
@@ -36,8 +25,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		exit(0);
 	while (++i < argc)
-		if (!argv[i][0] || !has_number(argv[i]))
-			ft_error(&a, &b);
+		invalid_input(argv[i]);
 	input_to_list(argc - 1, argv + 1, &a, &b);
 	check_duplicates(&a, &b);
 	if (ft_checksorted(a))

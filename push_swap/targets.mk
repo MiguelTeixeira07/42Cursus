@@ -7,7 +7,7 @@ SORT_DIR = ./sorting
 
 SRCS = $(addsuffix .c, \
 	$(NAME) \
-	$(addprefix $(ERR_DIR)/,  errors) \
+	$(addprefix $(ERR_DIR)/,  errors errors2) \
 	$(addprefix $(OP_DIR)/, operator push rotate swap) \
 	$(addprefix $(SRC_DIR)/,  input_formatting utils) \
 	$(addprefix $(SORT_DIR)/,  sorting index_sorting sort3 small_sorts) \

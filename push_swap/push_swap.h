@@ -30,8 +30,11 @@ void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b);
 // error managing
 void	ft_error(t_stack **a, t_stack **b);
 void	free_stacks(t_stack **a, t_stack **b);
-void	invalid_input(char *str, t_stack **a, t_stack **b);
+void	invalid_input(char *str);
 void	check_duplicates(t_stack **a, t_stack **b);
+void	atoll_error(t_stack **a, t_stack **b, char **nums);
+int		has_number(char *str);
+int		has_non_number(char *str);
 
 // operations
 void	operator(t_stack **head_a, t_stack **head_b, char *op);
