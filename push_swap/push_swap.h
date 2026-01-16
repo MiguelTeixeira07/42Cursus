@@ -32,7 +32,7 @@ void	ft_error(t_stack **a, t_stack **b);
 void	free_stacks(t_stack **a, t_stack **b);
 void	invalid_input(char *str);
 void	check_duplicates(t_stack **a, t_stack **b);
-void	atoll_error(t_stack **a, t_stack **b, char **nums);
+void	atoll_error(t_stack **a, t_stack **b, char **nums, int i);
 int		has_number(char *str);
 int		has_non_number(char *str);
 

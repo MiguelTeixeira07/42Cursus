@@ -1,12 +1,11 @@
 #include "../push_swap.h"
 
-void	atoll_error(t_stack **a, t_stack **b, char **nums)
+void	atoll_error(t_stack **a, t_stack **b, char **nums, int i)
 {
-	int	i;
-
-	i = 0;
-	while (nums[i])
-		free(nums[i++]);
+	if (!nums)
+		return ;
+	while (i >= 0)
+		free(nums[i--]);
 	free(nums);
 	ft_error(a, b);
 }

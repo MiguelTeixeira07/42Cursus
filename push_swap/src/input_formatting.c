@@ -98,7 +98,7 @@ void	input_to_list(int numstrs, char **strs, t_stack **a, t_stack **b)
 	{
 		c_num = ft_atoll(nums[i]);
 		if (c_num < INT_MIN || c_num > INT_MAX)
-			atoll_error(a, b, nums);
+			atoll_error(a, b, nums, i);
 		new = malloc(sizeof(t_stack));
 		if (!new)
 			return ;
